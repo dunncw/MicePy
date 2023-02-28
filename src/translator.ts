@@ -18,18 +18,16 @@ async function translate(text: string): Promise<string> {
   });
 
   // print out the structure of the response
-  console.log(response);
-
-
+  // console.log(response);
   if (!response.ok) {
     throw new Error(`Translation failed with status ${response.status}: ${await response.text()}`);
   }
 
   const outputs = await response.json();
-  console.log(outputs);
+  // console.log(outputs);
 
   const translated_text = outputs[0].translation_text;
-  console.log(translated_text);
+  // console.log(translated_text);
   return translated_text;
 }
 
