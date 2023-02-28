@@ -2,6 +2,7 @@
   "name": "micepy",
   "displayName": "MicePy",
   "description": "tbd",
+  "publisher": "cayden",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.75.0"
@@ -16,6 +17,10 @@
       {
         "command": "micepy.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "micepy.translate",
+        "title": "Translate"
       }
     ]
   },
@@ -28,16 +33,21 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.75.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/vscode": "^1.75.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
     "eslint": "^8.34.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^4.9.5",
-    "@vscode/test-electron": "^2.2.3"
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.5",
+    "formdata-polyfill": "^4.0.10",
+    "node-fetch": "^3.3.0"
   }
 }

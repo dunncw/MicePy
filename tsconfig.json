@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"skipLibCheck": false,
 		"module": "commonjs",
 		"target": "ES2020",
 		"outDir": "out",
@@ -14,4 +15,5 @@
 		// "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
 	}
+	
 }
