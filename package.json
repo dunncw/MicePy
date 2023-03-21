@@ -15,10 +15,34 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "MicePy",
+      "properties": {
+        "micepy.checkOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check for errors when a Python file is opened"
+        },
+        "micepy.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check for errors when a Python file is saved"
+        },
+        "micepy.useLocalData": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use local data for translations"
+        }
+      }
+    },
     "commands": [
       {
         "command": "micepy.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "micepy.runPythonFile",
+        "title": "Run Python File"
       },
       {
         "command": "micepy.translate",

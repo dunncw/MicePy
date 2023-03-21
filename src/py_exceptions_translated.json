@@ -1,0 +1,182 @@
+[
+  {
+    "error type": "AssertionError",
+    "error description": "Raised when an assert statement is false, indicating a condition expected to be true is not met",
+    "translated error description": "Criado cuando una afirmación es falsa, indicando una condición que se espera que sea verdadera no se cumple",
+    "translated error type": "AsertionError"
+  },
+  {
+    "error type": "AttributeError",
+    "error description": "Raised when an attempt to access or assign a non-existent attribute of an object fails",
+    "translated error description": "Levantado cuando falla un intento de acceder o asignar un atributo inexistente de un objeto",
+    "translated error type": "AttributeError"
+  },
+  {
+    "error type": "EOFError",
+    "error description": "Raised when the input() function encounters the end of a file unexpectedly",
+    "translated error description": "Levantado cuando la función input() encuentra el final de un archivo inesperadamente",
+    "translated error type": "EOFError"
+  },
+  {
+    "error type": "FloatingPointError",
+    "error description": "Raised when a floating-point operation fails due to numeric limitations",
+    "translated error description": "Levantado cuando una operación de punto flotante falla debido a limitaciones numéricas",
+    "translated error type": "Punto flotanteError"
+  },
+  {
+    "error type": "GeneratorExit",
+    "error description": "Raised when a generator's close() method is called, signaling the end of the generator",
+    "translated error description": "Elevado cuando se llama el método close() de un generador, señalizando el final del generador",
+    "translated error type": "GeneradorSalida"
+  },
+  {
+    "error type": "ImportError",
+    "error description": "Raised when the requested module cannot be found or loaded",
+    "translated error description": "Levantado cuando el módulo solicitado no se puede encontrar o cargar",
+    "translated error type": "ImportarError"
+  },
+  {
+    "error type": "IndexError",
+    "error description": "Raised when trying to access an index outside the bounds of a sequence (e.g., list or string)",
+    "translated error description": "Criado cuando se intenta acceder a un índice fuera de los límites de una secuencia (por ejemplo, lista o cadena)",
+    "translated error type": "ÍndiceError"
+  },
+  {
+    "error type": "KeyError",
+    "error description": "Raised when a requested key is not found in a dictionary",
+    "translated error description": "Criado cuando una clave solicitada no se encuentra en un diccionario",
+    "translated error type": "KeyError"
+  },
+  {
+    "error type": "KeyboardInterrupt",
+    "error description": "Raised when the user interrupts the program execution (usually by pressing Ctrl+C or Delete)",
+    "translated error description": "Levantado cuando el usuario interrumpe la ejecución del programa (normalmente pulsando Ctrl+C o Eliminar)",
+    "translated error type": "Interrupción del teclado"
+  },
+  {
+    "error type": "MemoryError",
+    "error description": "Raised when an operation runs out of memory and cannot continue",
+    "translated error description": "Criado cuando una operación se queda sin memoria y no puede continuar",
+    "translated error type": "MemoriaError"
+  },
+  {
+    "error type": "NameError",
+    "error description": "Raised when a variable is used before it has been assigned a value or is not available in the current scope",
+    "translated error description": "Elevado cuando se utiliza una variable antes de que se le haya asignado un valor o no esté disponible en el ámbito actual",
+    "translated error type": "NombreError"
+  },
+  {
+    "error type": "NotImplementedError",
+    "error description": "Raised when an abstract method is called but has not been implemented by a subclass",
+    "translated error description": "Criado cuando un método abstracto es llamado pero no ha sido implementado por una subclase",
+    "translated error type": "No implementadoError"
+  },
+  {
+    "error type": "OSError",
+    "error description": "Raised when a system-related error occurs, usually due to issues with input/output or the operating system",
+    "translated error description": "Se plantea cuando se produce un error relacionado con el sistema, generalmente debido a problemas con la entrada/salida o el sistema operativo",
+    "translated error type": "OSError"
+  },
+  {
+    "error type": "OverflowError",
+    "error description": "Raised when the result of a numeric operation is too large to be represented in the given data type",
+    "translated error description": "Criado cuando el resultado de una operación numérica es demasiado grande para ser representado en el tipo de datos dado",
+    "translated error type": "OverflowError"
+  },
+  {
+    "error type": "ReferenceError",
+    "error description": "Raised when a weak reference is used to access an object that has already been garbage collected",
+    "translated error description": "Criado cuando una referencia débil se utiliza para acceder a un objeto que ya ha sido recogida basura",
+    "translated error type": "ReferenceError"
+  },
+  {
+    "error type": "RuntimeError",
+    "error description": "Raised when an error occurs that doesn't fit into any specific category",
+    "translated error description": "Criado cuando ocurre un error que no encaja en ninguna categoría específica",
+    "translated error type": "Tiempo de ejecuciónError"
+  },
+  {
+    "error type": "StopIteration",
+    "error description": "Raised by the next() function when there are no more items left in an iterator",
+    "translated error description": "Criado por la función siguiente() cuando no quedan más elementos en un iterador",
+    "translated error type": "StopIteration"
+  },
+  {
+    "error type": "SyntaxError",
+    "error description": "Raised when the Python parser encounters incorrect syntax in the code",
+    "translated error description": "Criado cuando el analizador de Python encuentra sintaxis incorrecta en el código",
+    "translated error type": "SintaxisError"
+  },
+  {
+    "error type": "IndentationError",
+    "error description": "Raised when the code has incorrect indentation, violating Python's whitespace rules",
+    "translated error description": "Criado cuando el código tiene una sangría incorrecta, violando las reglas del espacio blanco de Python",
+    "translated error type": "SangradoError"
+  },
+  {
+    "error type": "TabError",
+    "error description": "Raised when the indentation in the code contains a mix of tabs and spaces, causing inconsistencies",
+    "translated error description": "Levantado cuando la sangría en el código contiene una mezcla de pestañas y espacios, causando inconsistencias",
+    "translated error type": "TabError"
+  },
+  {
+    "error type": "SystemError",
+    "error description": "Raised when the Python interpreter encounters an internal error or problem",
+    "translated error description": "Criado cuando el intérprete de Python encuentra un error o problema interno",
+    "translated error type": "SystemError"
+  },
+  {
+    "error type": "SystemExit",
+    "error description": "Raised by the sys.exit() function to indicate the program should exit",
+    "translated error description": "Levantado por la función sys.exit() para indicar que el programa debe salir",
+    "translated error type": "SystemExit"
+  },
+  {
+    "error type": "TypeError",
+    "error description": "Raised when an operation or function is applied to an object of an incorrect or unexpected type",
+    "translated error description": "Levantado cuando una operación o función se aplica a un objeto de un tipo incorrecto o inesperado",
+    "translated error type": "TipoError"
+  },
+  {
+    "error type": "UnboundLocalError",
+    "error description": "Raised when a local variable is referenced before a value is assigned to it",
+    "translated error description": "Elevado cuando se hace referencia a una variable local antes de asignarle un valor",
+    "translated error type": "UnboundLocalError"
+  },
+  {
+    "error type": "UnicodeError",
+    "error description": "Raised when an issue occurs with Unicode encoding or decoding",
+    "translated error description": "Se plantea cuando se produce un problema con la codificación o decodificación de Unicode",
+    "translated error type": "UnicodeError"
+  },
+  {
+    "error type": "UnicodeEncodeError",
+    "error description": "Raised when a Unicode-related error occurs during the process of encoding text",
+    "translated error description": "Levantado cuando se produce un error relacionado con Unicode durante el proceso de codificación de texto",
+    "translated error type": "UnicodeEncodeError"
+  },
+  {
+    "error type": "UnicodeDecodeError",
+    "error description": "Raised when a Unicode-related error occurs during the process of decoding text",
+    "translated error description": "Elevado cuando se produce un error relacionado con Unicode durante el proceso de decodificación del texto",
+    "translated error type": "UnicodecodeError"
+  },
+  {
+    "error type": "UnicodeTranslateError",
+    "error description": "Raised when a Unicode-related error occurs during the process of translating text",
+    "translated error description": "Se plantea cuando se produce un error relacionado con Unicode durante el proceso de traducción de texto",
+    "translated error type": "UnicodeTranslateError"
+  },
+  {
+    "error type": "ValueError",
+    "error description": "Raised when a function receives an argument with the correct type but an invalid value",
+    "translated error description": "Levantado cuando una función recibe un argumento con el tipo correcto pero un valor no válido",
+    "translated error type": "ValorError"
+  },
+  {
+    "error type": "ZeroDivisionError",
+    "error description": "Raised when an attempt is made to divide by zero, which is not allowed in mathematics",
+    "translated error description": "Elevado cuando se hace un intento de dividir por cero, que no está permitido en matemáticas",
+    "translated error type": "ZeroDivisionError"
+  }
+]
