@@ -78,6 +78,7 @@ async function preloadModel(): Promise<void> {
     const translated_text = outputs[0].translation_text;
     console.error(translated_text);
   } catch (error) {
+    // print out error message to console
     console.error('Failed to preload model:', error);
   }
 }
