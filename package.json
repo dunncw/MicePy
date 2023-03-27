@@ -32,6 +32,26 @@
           "type": "boolean",
           "default": false,
           "description": "Use local data for translations"
+        },
+        "micepy.huggingFaceModelUrl": {
+          "type": "string",
+          "default": "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es",
+          "description": "Hugging Face model URL for translation"
+        },
+        "micepy.useGPTForErrorExplanation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use GPT to provide error explanations"
+        },
+        "micepy.gptAPIKey": {
+          "type": "string",
+          "default": "",
+          "description": "GPT API Key for error explanations"
+        },
+        "micepy.gptModelName": {
+          "type": "string",
+          "default": "code-davinci-002",
+          "description": "GPT model name to use for error explanations"
         }
       }
     },

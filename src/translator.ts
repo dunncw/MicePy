@@ -6,9 +6,11 @@ import localData from './py_exceptions_translated.json';
 async function translate(text: string): Promise<string> {
   // Read the setting
   const useLocalData = vscode.workspace.getConfiguration('micepy').get('useLocalData');
+  console.log(`useLocalData: ${useLocalData}`);
   
     // If useLocalData is true and the translation exists in the local data file, return the local translation
   if (useLocalData) {
+    console.log('using local data');
     // take the text string and split it on ':'
     const splitText = text.split(':');
     const errorType = splitText[0].trim();
@@ -24,8 +26,10 @@ async function translate(text: string): Promise<string> {
     }
   }
   else {
-    const url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es";
+    // Read the Hugging Face model URL from the extension settings
+    const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
     const apiKey = "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";
+    console.log(`new url: ', ${url}`);
 
     // create the body data for the request
     // it should grab the text from the input box and put it in the body wrapped in quotes
@@ -47,18 +51,22 @@ async function translate(text: string): Promise<string> {
     }
 
     const outputs = await response.json();
-    // console.log(outputs);
+    // print out the structure of the outputs with nice formatting
+    //console.log(JSON.stringify(outputs, null, 2));
 
     const translated_text = outputs[0].translation_text;
-    // console.log(translated_text);
+    //console.log(translated_text);
     return translated_text;
     }
 }
 
 async function preloadModel(): Promise<void> {
+  console.log('start model preloading');
   try {
-    const url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es";
+    // Read the Hugging Face model URL from the extension settings
+    const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
     const apiKey = "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";
+    console.log(`new url: ', ${url}`);
 
     const response = await fetch(url, {
       method: "POST",
@@ -70,15 +78,16 @@ async function preloadModel(): Promise<void> {
     });
 
     if (!response.ok) {
-      vscode.window.showErrorMessage(`Translation failed with status ${response.status}: ${await response.text()}`);
-      throw new Error(`Translation failed with status ${response.status}: ${await response.text()}`);
+      console.error('Failed to preload model:', await response.text());
+      return;
     }
 
-    const outputs = await response.json();
-    const translated_text = outputs[0].translation_text;
-    console.error(translated_text);
+    // Clone the response to consume the body more than once if necessary
+    const clonedResponse = response.clone();
+
+    const result = await clonedResponse.json();
+    console.log('Model preloaded successfully:', result);
   } catch (error) {
-    // print out error message to console
     console.error('Failed to preload model:', error);
   }
 }
