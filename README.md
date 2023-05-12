@@ -20,6 +20,12 @@ BicePy offers several unique features:
 
 BicePy requires an active internet connection for accessing the Hugging Face API and LLMs. However, offline usage is possible with the local dictionary feature.
 
+## Installation
+
+BicePy can be installed from the VS Code Marketplace. Alternatively, you can download the extension from our GitHub repository and install it manually.
+
+https://marketplace.visualstudio.com/items?itemName=CaydenwilliamDunn.BicePy
+
 ## Extension Settings
 
 After installation, BicePy adds the following settings to your VS Code environment:
