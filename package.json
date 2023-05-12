@@ -1,8 +1,9 @@
 {
   "name": "micepy",
+  "repository": "https://github.com/dunncw/BicePy",
   "displayName": "MicePy",
   "description": "tbd",
-  "publisher": "cayden",
+  "publisher": "CaydenwilliamDunn",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.75.0"
@@ -62,7 +63,7 @@
       },
       {
         "command": "micepy.runPythonFile",
-        "title": "Run Python File"
+        "title": "MicePy: Run Python File"
       },
       {
         "command": "micepy.translate",

@@ -1,71 +1,44 @@
-# micepy README
+# BicePy README
 
-This is the README for your extension "micepy". After writing up a brief description, we recommend including the following sections.
+BicePy is a VSCode extension designed to make Python programming more accessible to non-native English speakers. It utilizes machine learning to translate Python error messages and provides descriptive explanations in Spanish. The extension leverages large language models for translation and error explainability, offering a low-cost, plug-and-play approach to language translation.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+BicePy offers several unique features:
 
-For example if there is an image subfolder under your extension project workspace:
+1. **Error Explainability with Large Language Models (LLMs):** BicePy integrates an LLM to provide detailed explanations for Python errors and suggest potential fixes.
 
-\!\[feature X\]\(images/feature-x.png\)
+2. **Pre-trained Hugging Face Model with Neural Machine Translation (NMT):** BicePy uses a pre-trained Hugging Face model based on NMT to translate Python error messages into Spanish. 
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+3. **Future-proofing with Custom Models:** BicePy allows users to integrate their custom models for error translation and explainability. This feature enables users to adapt to future improvements in natural language processing and machine learning.
+
+4. **Different Ways to Run BicePy:** Users can run BicePy using the command palette or by enabling settings that check Python files whenever they are opened or saved in the editor.
+
+5. **Local Dictionary for Offline Usage:** BicePy offers an optional local dictionary for translating errors without an internet connection.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+BicePy requires an active internet connection for accessing the Hugging Face API and LLMs. However, offline usage is possible with the local dictionary feature.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+After installation, BicePy adds the following settings to your VS Code environment:
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. `bicepy.runOnFileOpen`: Enable/disable running BicePy when a Python file is opened.
+2. `bicepy.runOnFileSave`: Enable/disable running BicePy when a Python file is saved.
+3. `bicepy.useLocalDictionary`: Enable/disable using the local dictionary for offline translations.
+4. `bicepy.customTranslationModel`: Specify a custom translation model.
+5. `bicepy.customExplainabilityModel`: Specify a custom explainability model.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Please refer to the 'Issues' tab in our GitHub repository for known issues and ongoing developments.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Initial release of BicePy.
+Introduced the error explainability feature and added support for custom models.
 
 **Enjoy!**
