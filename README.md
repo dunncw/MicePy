@@ -28,6 +28,9 @@ https://marketplace.visualstudio.com/items?itemName=CaydenwilliamDunn.MicePy
 
 ## Setup
 
+To use hugging face models user will need to have a env variable named 'HF_API_KEY' that contains hugging face API key
+To use Openai GPT models user will need to have a en veriable name 'GPT_API_KEY' that contians OpenAI API key
+
 ## Extension Settings
 
 After installation, MicePy adds the following settings to your VS Code environment:
