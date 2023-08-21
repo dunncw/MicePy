@@ -7,6 +7,9 @@ async function translate(text: string): Promise<string> {
   // Read the setting
   const useLocalData = vscode.workspace.getConfiguration('micepy').get('useLocalData');
   console.log(`useLocalData: ${useLocalData}`);
+
+  // hugging face api key
+  const hfAPIKey = process.env.HF_API_KEY;
   
     // If useLocalData is true and the translation exists in the local data file, return the local translation
   if (useLocalData) {
@@ -28,7 +31,7 @@ async function translate(text: string): Promise<string> {
   else {
     // Read the Hugging Face model URL from the extension settings
     const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
-    const apiKey = "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";
+    const apiKey = hfAPIKey;
     // console.log(`new url: '${url}'`);
     // testing to see what is being fed to translation model
     console.log(text)
@@ -64,11 +67,13 @@ async function translate(text: string): Promise<string> {
 }
 
 async function preloadModel(): Promise<void> {
+  // hugging face api key
+  const hfAPIKey = process.env.HF_API_KEY;
   // console.log('start model preloading');
   try {
     // Read the Hugging Face model URL from the extension settings
     const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
-    const apiKey = "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";
+    const apiKey = hfAPIKey;
     // console.log(`new url: '${url}'`);
 
     const response = await fetch(url, {
