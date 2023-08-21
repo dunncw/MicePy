@@ -29,7 +29,9 @@ async function translate(text: string): Promise<string> {
     // Read the Hugging Face model URL from the extension settings
     const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
     const apiKey = "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";
-    console.log(`new url: ', ${url}`);
+    // console.log(`new url: '${url}'`);
+    // testing to see what is being fed to translation model
+    console.log(text)
 
     // create the body data for the request
     // it should grab the text from the input box and put it in the body wrapped in quotes
@@ -43,10 +45,11 @@ async function translate(text: string): Promise<string> {
       },
       body: JSON.stringify({inputs: text})
     });
+    // console.log(response.url);
 
-    // print out the structure of the response
     // console.log(response);
     if (!response.ok) {
+      vscode.window.showErrorMessage(`Translation failed with status ${response.status}: ${await response.text()}`);
       throw new Error(`Translation failed with status ${response.status}: ${await response.text()}`);
     }
 
@@ -61,12 +64,12 @@ async function translate(text: string): Promise<string> {
 }
 
 async function preloadModel(): Promise<void> {
-  console.log('start model preloading');
+  // console.log('start model preloading');
   try {
     // Read the Hugging Face model URL from the extension settings
     const url = vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl') || 'https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es'; // Default to the Spanish model
     const apiKey = "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";
-    console.log(`new url: ', ${url}`);
+    // console.log(`new url: '${url}'`);
 
     const response = await fetch(url, {
       method: "POST",
@@ -76,6 +79,9 @@ async function preloadModel(): Promise<void> {
       },
       body: JSON.stringify({inputs: 'preload model'})
     });
+
+    // print out the structure of the response
+    // console.log(response.body);
 
     if (!response.ok) {
       console.error('Failed to preload model:', await response.text());

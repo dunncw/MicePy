@@ -61,11 +61,11 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(runPythonFile);
 
-  let disposable = vscode.commands.registerCommand('micepy.helloWorld', () => {
-    const message = 'Hello World from MicePy!';
-    vscode.window.showInformationMessage(message);
-  });
-  context.subscriptions.push(disposable);
+  // let disposable = vscode.commands.registerCommand('micepy.helloWorld', () => {
+  //   const message = 'Hello World from MicePy!';
+  //   vscode.window.showInformationMessage(message);
+  // });
+  // context.subscriptions.push(disposable);
 
   let disposable_two = vscode.commands.registerCommand('micepy.translate', async () => {
     const input = await vscode.window.showInputBox({

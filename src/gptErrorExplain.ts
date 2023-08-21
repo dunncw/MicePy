@@ -1,28 +1,43 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 import * as vscode from 'vscode';
 
-export async function getErrorExplanation(modelName: string, error: string, code: string): Promise<string | null> {
-  const apiKey = vscode.workspace.getConfiguration('micepy').get<string>('gptAPIKey');
-  const configuration = new Configuration({
-    apiKey: apiKey,
-  });
-  const openai = new OpenAIApi(configuration);
+export async function getErrorExplanation(error: string, code: string): Promise<string | null> {
+    // grab GPT_API_KEY from environment variables
+    const gptAPIKey = process.env.GPT_API_KEY;
 
-  const prompt = `Error encountered in the following code:\n\n${code}\n\nError message:\n${error}\n\nPlease explain the error and provide a possible solution.`;
+    const gptModelName = vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') || 'gpt-3.5-turbo'; // Default to the GPT-3.5 turbo model
 
-  try {
-    const response = await openai.createCompletion({
-      model: modelName,
-      prompt,
-      max_tokens: 100,
-      n: 1,
-      stop: null,
-      temperature: 0.7,
+    if (!gptAPIKey) {
+        vscode.window.showErrorMessage('GPT_API_KEY environment variable not set!\nPlease set it in your environment variables refer to the README for more information.');
+        return null;
+    }
+
+    const openai = new OpenAI({
+        apiKey: gptAPIKey,
     });
 
-    return response.data.choices[0].text ?? null;
-  } catch (error) {
-    console.error('Failed to get error explanation:', error);
-    return null;
-  }
+    const prompt = `Error encountered in the following code:\n\n${code}\n\nError message:\n${error}\n\nPlease explain the error and provide a one possible solution in the most concise manner possible.`;
+
+    try {
+        const response = await openai.chat.completions.create({
+            messages: [
+                { role: "system", content: "You are a helpful coding assistant that explains complier errors in a clear concise manner." },
+                { role: "user", content: prompt }
+            ],
+            model: gptModelName,
+        });
+
+        // for testing purposes, print the response text to the console
+        console.log(response.choices[0].message?.content);
+
+        return response.choices[0].message?.content ?? null;
+
+    } catch (error) {
+        if (error instanceof OpenAI.APIError) {
+            console.error('API Error:', error.message);
+        } else {
+            console.error('Failed to get error explanation:', error);
+        }
+        return null;
+    }
 }

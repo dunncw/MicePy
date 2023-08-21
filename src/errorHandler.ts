@@ -4,15 +4,14 @@ import * as vscode from 'vscode';
 
 export async function handleError(filePath: string) {
   const useGPTForErrorExplanation = vscode.workspace.getConfiguration('micepy').get('useGPTForErrorExplanation');
-  const gptModelName = vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') || 'code-davinci-002';
 
   startPythonProcess(filePath)
     .then(async (translatedError) => {
       // If useGPTForErrorExplanation is true, then request the error explanation from GPT
-      if (useGPTForErrorExplanation && gptModelName) {
+      if (useGPTForErrorExplanation) {
         try {
           const document = await vscode.workspace.openTextDocument(filePath);
-          const errorExplanation = await getErrorExplanation(gptModelName, translatedError, document.getText());
+          const errorExplanation = await getErrorExplanation(translatedError, document.getText());
 
           if (errorExplanation) {
             translatedError += '\n\n' + errorExplanation;

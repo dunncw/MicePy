@@ -44,11 +44,6 @@
           "default": false,
           "description": "Use GPT to provide error explanations"
         },
-        "micepy.gptAPIKey": {
-          "type": "string",
-          "default": "",
-          "description": "GPT API Key for error explanations"
-        },
         "micepy.gptModelName": {
           "type": "string",
           "default": "code-davinci-002",
@@ -83,7 +78,7 @@
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
-    "@types/vscode": "^1.75.0",
+    "@types/vscode": "^1.81.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "@vscode/test-electron": "^2.2.3",
@@ -95,6 +90,7 @@
   "dependencies": {
     "cross-fetch": "^3.1.5",
     "formdata-polyfill": "^4.0.10",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.0",
+    "openai": "^4.0.1"
   }
 }

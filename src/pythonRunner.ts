@@ -13,31 +13,27 @@ export async function startPythonProcess(filePath: string): Promise<string> {
       console.error(`Python error: ${data}`);
       let error = data.toString().split('\n');
       let errorLine = error[error.length - 2];
-
-      if (useGPTForErrorExplanation) {
-        const gptAPIKey = vscode.workspace.getConfiguration('micepy').get('gptAPIKey');
-        const gptModelName = vscode.workspace.getConfiguration('micepy').get<string>('gptModelName');
-
-        if (gptAPIKey && gptModelName) {
-          const explanation = await getErrorExplanation(gptModelName, errorLine, code.toString());
+  
+      // Check if the error string contains 'Traceback (most recent call last):'
+      if (error[0].includes('Traceback (most recent call last):')) {
+        // if using gpt for error explanation
+        if (useGPTForErrorExplanation) {
+          const explanation = await getErrorExplanation(errorLine, code.toString());
           const translatedError = await translate(errorLine);
           const translatedExplanation = explanation ? await translate(explanation) : null;
-
           if (translatedExplanation) {
-            resolve(`${translatedError}\n\nExplanation: ${translatedExplanation}`);
+            resolve(`${translatedError}\n\n${translatedExplanation}`);
           } else {
             resolve(translatedError);
           }
-        } else {
+        } 
+        // if not using gpt for error explanation
+        else {
           const translatedError = await translate(errorLine);
           resolve(translatedError);
         }
-      } else {
-        const translatedError = await translate(errorLine);
-        resolve(translatedError);
       }
     });
-
     pythonProcess.on('exit', (code) => {
       console.log(`Python process exited with code ${code}`);
       pythonProcess.kill();
