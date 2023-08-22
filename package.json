@@ -1,13 +1,15 @@
 {
   "name": "MicePy",
-  "repository": "https://github.com/dunncw/BicePy",
+  "repository": "https://github.com/dunncw/MicePy",
   "displayName": "MicePy",
-  "description": "tbd",
-  "publisher": "CaydenwilliamDunn",
-  "version": "0.0.1",
+  "description": "MicePy is a VSCode extension designed to make Python programming more accessible to non-native English speakers. It utilizes machine learning to translate Python error messages and provides descriptive explanations in most languages. The extension leverages large language models for translation and error explainability, offering a low-cost, plug-and-play approach to language translation.",
+  "publisher": "cwd",
+  "icon": "images/BP_icon_image.png",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.75.0"
   },
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "categories": [
     "Other"
   ],
@@ -46,7 +48,7 @@
         },
         "micepy.gptModelName": {
           "type": "string",
-          "default": "code-davinci-002",
+          "default": "gpt-3.5-turbo",
           "description": "GPT model name to use for error explanations"
         }
       }
@@ -58,11 +60,11 @@
       },
       {
         "command": "micepy.runPythonFile",
-        "title": "MicePy: Run Python File"
+        "title": "MicePy: Run Python File and Translate Errors"
       },
       {
         "command": "micepy.translate",
-        "title": "MicePy:Translate"
+        "title": "MicePy: Translate text"
       }
     ]
   },
