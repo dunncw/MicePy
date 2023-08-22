@@ -10,13 +10,35 @@ export function activate(context: vscode.ExtensionContext) {
     if (event.affectsConfiguration('micepy.huggingFaceModelUrl')) {
       try {
         await preloadModel();
-        vscode.window.showInformationMessage('New Hugging Face model URL loaded successfully.');
+        vscode.window.showInformationMessage('New Hugging Face model URL loaded successfully.\nLoaded URL: ' + vscode.workspace.getConfiguration('micepy').get<string>('huggingFaceModelUrl'));
       } catch (error) {
         const typedError = error as Error;
         vscode.window.showErrorMessage(`Failed to preload new model: ${typedError.message}`);
       }
     }
   });
+
+  //create the same onDidChangeConfiguration as above but for when the gptModelName is changed
+  vscode.workspace.onDidChangeConfiguration(async (event) => {
+    if (event.affectsConfiguration('micepy.gptModelName')) {
+      try {
+        // print to the console the text that was input into the gptModelName
+        console.log(vscode.workspace.getConfiguration('micepy').get<string>('gptModelName'));
+        // check the inputted text to see if it is a valid model name the valid model names are 'gpt-3.5-turbo' which is the default model and 'gpt-4'
+        if (vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== 'gpt-3.5-turbo' && vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== 'gpt-4' && vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== '') {
+          // if the inputted text is not a valid model name then show an error message
+          vscode.window.showErrorMessage('Invalid GPT model name!\nPlease enter a valid model name.\n Valid model names are: "gpt-3.5-turbo"(defualt) and "gpt-4"');
+        } else {
+          // if the inputted text is a valid model name then preload the model. print out the model name in the popup message
+          vscode.window.showInformationMessage(`New GPT model name loaded successfully: ${vscode.workspace.getConfiguration('micepy').get<string>('gptModelName')}`);
+        }
+      } catch (error) {
+        const typedError = error as Error;
+        vscode.window.showErrorMessage(`Failed to preload GPT model: ${typedError.message}`);
+      }
+    }
+  });
+
 
   vscode.workspace.onDidOpenTextDocument((document: vscode.TextDocument) => {
     if (document.languageId === 'python') {

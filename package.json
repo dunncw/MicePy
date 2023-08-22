@@ -5,7 +5,7 @@
   "description": "MicePy is a VSCode extension designed to make Python programming more accessible to non-native English speakers. It utilizes machine learning to translate Python error messages and provides descriptive explanations in most languages. The extension leverages large language models for translation and error explainability, offering a low-cost, plug-and-play approach to language translation.",
   "publisher": "cwd",
   "icon": "images/BP_icon_image.png",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.75.0"
   },
@@ -41,7 +41,7 @@
           "default": "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es",
           "description": "Hugging Face model URL for translation"
         },
-        "micepy.useGPTForErrorExplanation": {
+        "micepy.useGptForErrorExplanation": {
           "type": "boolean",
           "default": false,
           "description": "Use GPT to provide error explanations"
