@@ -1,6 +1,19 @@
 # MicePy README
 
-MicePy is a VSCode extension designed to make Python programming more accessible to non-native English speakers. It utilizes machine learning to translate Python error messages and provides descriptive explanations in Spanish. The extension leverages large language models for translation and error explainability, offering a low-cost, plug-and-play approach to language translation.
+MicePy is a VSCode extension designed to make Python programming more accessible to non-native English speakers. It utilizes machine learning to translate Python error messages and provides descriptive explanations in most languages. The extension leverages large language models for translation and error explainability, offering a low-cost, plug-and-play approach to language translation.
+
+## Setup !!IMPORTANT!!
+
+If you plan to use MicePy in online mode you will need to set up environment variables for each api you intend to use. If you do not know how to set up and evnironment variable see tuts below. 
+
+Env variables you will need:
+- To use hugging face models user will need to have a env variable named 'HF_API_KEY' that contains hugging face API key
+- To use Openai GPT models user will need to have a en veriable name 'GPT_API_KEY' that contians OpenAI API key
+
+How to set up env variables: 
+Mac - https://apple.stackexchange.com/questions/106778/how-do-i-set-environment-variables-on-os-x
+Windows - https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0
+Lunix - https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html#:~:text=You%20can%20set%20an%20environment,.%20)%20is%20hidden%20by%20default.
 
 ## Features
 
@@ -23,13 +36,6 @@ MicePy requires an active internet connection for accessing the Hugging Face API
 ## Installation
 
 MicePy can be installed from the VS Code Marketplace. Alternatively, you can download the extension from our GitHub repository and install it manually.
-
-https://marketplace.visualstudio.com/items?itemName=CaydenwilliamDunn.MicePy
-
-## Setup
-
-To use hugging face models user will need to have a env variable named 'HF_API_KEY' that contains hugging face API key
-To use Openai GPT models user will need to have a en veriable name 'GPT_API_KEY' that contians OpenAI API key
 
 ## Extension Settings
 
