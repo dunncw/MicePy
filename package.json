@@ -41,7 +41,7 @@
           "default": "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-es",
           "description": "Hugging Face model URL for translation"
         },
-        "micepy.useGptForErrorExplanation": {
+        "micepy.useGPTForErrorExplanation": {
           "type": "boolean",
           "default": false,
           "description": "Use GPT to provide error explanations"

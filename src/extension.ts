@@ -28,6 +28,11 @@ export function activate(context: vscode.ExtensionContext) {
         if (vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== 'gpt-3.5-turbo' && vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== 'gpt-4' && vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') !== '') {
           // if the inputted text is not a valid model name then show an error message
           vscode.window.showErrorMessage('Invalid GPT model name!\nPlease enter a valid model name.\n Valid model names are: "gpt-3.5-turbo"(defualt) and "gpt-4"');
+        }
+        // if the field is left blank then show a message for base model gpt-3.5-turbo
+        else if (vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') === '') {
+          // if the inputted text is not a valid model name then show an error message
+          vscode.window.showInformationMessage(`New GPT model name loaded successfully: gpt-3.5-turbo (default)`);
         } else {
           // if the inputted text is a valid model name then preload the model. print out the model name in the popup message
           vscode.window.showInformationMessage(`New GPT model name loaded successfully: ${vscode.workspace.getConfiguration('micepy').get<string>('gptModelName')}`);
@@ -105,6 +110,38 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
   context.subscriptions.push(disposable_two);
+
+
+
+  // DeBug Console Output extension settings
+
+    //output to debug console everytime use gpt for error explanation is changed
+    vscode.workspace.onDidChangeConfiguration(async (event) => {
+      if (event.affectsConfiguration('micepy.useGPTForErrorExplanation')) {
+        try {
+          // print to the console the text that was input into the useGPTForErrorExplanation
+          console.log(vscode.workspace.getConfiguration('micepy').get<boolean>('useGPTForErrorExplanation'));
+        } catch (error) {
+          const typedError = error as Error;
+          vscode.window.showErrorMessage(`Failed to preload GPT model: ${typedError.message}`);
+        }
+      }
+    });
+  
+    //output to debug console everytime checkOnOpen is changed
+    vscode.workspace.onDidChangeConfiguration(async (event) => {
+      if (event.affectsConfiguration('micepy.checkOnOpen')) {
+        try {
+          // print to the console the text that was input into the checkOnOpen
+          console.log(vscode.workspace.getConfiguration('micepy').get<boolean>('checkOnOpen'));
+        } catch (error) {
+          const typedError = error as Error;
+          vscode.window.showErrorMessage(`Failed to preload GPT model: ${typedError.message}`);
+        }
+      }
+    });
+
+
 }
 
 export function deactivate() {}
