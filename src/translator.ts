@@ -6,7 +6,7 @@ import localData from './py_exceptions_translated.json';
 async function translate(text: string): Promise<string> {
   // Read the setting
   const useLocalData = vscode.workspace.getConfiguration('micepy').get('useLocalData');
-  console.log(`useLocalData: ${useLocalData}`);
+  // console.log(`useLocalData: ${useLocalData}`);
 
   // hugging face api key
   const hfAPIKey = process.env.HF_API_KEY;
@@ -34,7 +34,7 @@ async function translate(text: string): Promise<string> {
     const apiKey = hfAPIKey;
     // console.log(`new url: '${url}'`);
     // testing to see what is being fed to translation model
-    console.log(text)
+    // console.log(text)
 
     // create the body data for the request
     // it should grab the text from the input box and put it in the body wrapped in quotes

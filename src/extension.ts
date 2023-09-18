@@ -82,7 +82,7 @@ export function activate(context: vscode.ExtensionContext) {
         console.log(translatedError);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   });
 
