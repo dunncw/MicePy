@@ -1,15 +1,20 @@
 import fetch from 'cross-fetch';
 import * as vscode from 'vscode';
-// read in the local data file
 import localData from './py_exceptions_translated.json';
 
 async function translate(text: string): Promise<string> {
-  // Read the setting
-  const useLocalData = vscode.workspace.getConfiguration('micepy').get('useLocalData');
-  // console.log(`useLocalData: ${useLocalData}`);
+    const useLocalData = vscode.workspace.getConfiguration('micepy').get('useLocalData') as boolean;
 
-  // hugging face api key
-  const hfAPIKey = process.env.HF_API_KEY;
+    let hfAPIKey = vscode.workspace.getConfiguration('micepy').get('huggingfaceApiKey') || "";
+
+    if (typeof hfAPIKey === 'string' && !hfAPIKey.trim()) {
+      hfAPIKey = process.env.HF_API_KEY || "";
+    }
+
+    if (typeof hfAPIKey !== 'string' || !hfAPIKey.trim()) {
+      vscode.window.showErrorMessage('Hugging Face API Key is not set in either VSCode settings or environment variables.');
+      return "";
+    }
   
     // If useLocalData is true and the translation exists in the local data file, return the local translation
   if (useLocalData) {

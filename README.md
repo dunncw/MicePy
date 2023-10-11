@@ -58,4 +58,20 @@ Please refer to the 'Issues' tab in our GitHub repository for known issues and o
 Initial release of MicePy.
 Introduced the error explainability feature and added support for custom models.
 
+### 0.1.6
+# Updates to MicePy's Error Handling and API Key Configuration:
+1. Enhanced VSCode Settings:
+Added the capability for users to input OpenAI and Hugging Face API keys directly within the VSCode extension settings.
+While this offers ease of use, it is less secure than environment variables. Users have been advised of this potential risk.
+2. Improved API Key Retrieval:
+The system first checks if the API keys are available in the VSCode settings.
+If not provided within the settings, it falls back to retrieving from environment variables.
+If the keys aren't found in either location, relevant error messages are displayed to guide users.
+3. Better OpenAI Error Handling:
+In cases where the OpenAI API fails to provide an explanation (possible reasons might be a malformed API key, connection issues, etc.), the error is now gracefully caught and managed.
+The user is presented with an informative error message suggesting that there was an issue with fetching explanations from OpenAI and advising them to check their API key.
+4. Efficient Error Processing in Python Execution:
+When running a Python process, errors from stderr are now effectively captured, processed, and subsequently either explained using OpenAI's GPT or simply translated using Hugging Face, based on the user's settings.
+If OpenAI's GPT fails to provide an explanation, the error is communicated back to the user instead of only presenting the translated error from Hugging Face.
+
 **Enjoy!**

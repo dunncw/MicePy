@@ -2,8 +2,16 @@ import OpenAI from 'openai';
 import * as vscode from 'vscode';
 
 export async function getErrorExplanation(error: string, code: string): Promise<string | null> {
-    // grab GPT_API_KEY from environment variables
-    const gptAPIKey = process.env.GPT_API_KEY;
+    let gptAPIKey = vscode.workspace.getConfiguration('micepy').get<string>('openaiApiKey') || "";
+
+    if (!gptAPIKey.trim()) {
+        gptAPIKey = process.env.GPT_API_KEY || "";
+    }
+
+    if (!gptAPIKey.trim()) {
+        vscode.window.showErrorMessage('OpenAI API Key is not set in either VSCode settings or environment variables.');
+        return null;
+    }
 
     const gptModelName = vscode.workspace.getConfiguration('micepy').get<string>('gptModelName') || 'gpt-3.5-turbo'; // Default to the GPT-3.5 turbo model
 
